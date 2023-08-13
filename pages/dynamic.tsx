@@ -1,5 +1,4 @@
 import { GetServerSideProps, NextPage } from "next";
-import { type } from "os";
 import { ReactNode, useEffect, useState } from "react";
 import { Col, Container, Row } from "reactstrap";
 
