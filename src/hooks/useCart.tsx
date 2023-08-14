@@ -15,9 +15,7 @@ type CartContextType = {
 
 const CartContext = createContext<CartContextType>({} as CartContextType);
 
-export const CartContextProvider = (props: { 
-  children: ReactNode 
-}) => {
+export const CartContextProvider = (props: { children: ReactNode }) => {
   const [cart, setCart] = useState<ProductType[]>([]);
 
   useEffect(() => {
@@ -35,7 +33,7 @@ export const CartContextProvider = (props: {
   };
 
   const removeProduct = (productId: number) => {
-    const productIndex = cart.findIndex(product => product.id === productId);
+    const productIndex = cart.findIndex((product) => product.id === productId);
 
     if (productIndex !== -1) {
       const updatedCart = [...cart];
@@ -46,9 +44,7 @@ export const CartContextProvider = (props: {
   };
 
   return (
-    <CartContext.Provider 
-      value={{ cart, addProduct, removeProduct }}
-    >
+    <CartContext.Provider value={{ cart, addProduct, removeProduct }}>
       {props.children}
     </CartContext.Provider>
   );

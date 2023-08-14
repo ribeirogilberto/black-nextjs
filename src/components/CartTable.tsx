@@ -9,9 +9,7 @@ type CartEntry = {
   quantity: number;
 };
 
-const CartTableRow = (props: { 
-  entry: CartEntry 
-}) => {
+const CartTableRow = (props: { entry: CartEntry }) => {
   const { addProduct, removeProduct } = useCart();
 
   return (
@@ -62,7 +60,7 @@ export default function CartTable() {
   useEffect(() => {
     const entriesList = cart.reduce((list, product) => {
       const entryIndex = list.findIndex(
-        entry => entry.product.id === product.id
+        (entry) => entry.product.id === product.id
       );
 
       if (entryIndex === -1) {
@@ -94,7 +92,9 @@ export default function CartTable() {
         </tr>
       </thead>
       <tbody>
-        {cartEntries.map(entry => <CartTableRow key={entry.product.id} entry={entry} />)}
+        {cartEntries.map((entry) => (
+          <CartTableRow key={entry.product.id} entry={entry} />
+        ))}
       </tbody>
     </Table>
   );

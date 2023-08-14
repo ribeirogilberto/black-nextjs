@@ -16,35 +16,36 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (typeof id === "string") {
     const product = await fetchProduct(id);
 
-    return { 
-      props: { 
-        product 
-      }, revalidate: 10 
+    return {
+      props: {
+        product,
+      },
+      revalidate: 10,
     };
   }
 
-  return { 
-    redirect: { 
-      destination: "/products", 
-      permanent: false 
-    } 
+  return {
+    redirect: {
+      destination: "/products",
+      permanent: false,
+    },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await fetchProducts();
 
-  const paths = products.map(product => {
-    return { 
-      params: { 
-        id: product.id.toString() 
-      } 
+  const paths = products.map((product) => {
+    return {
+      params: {
+        id: product.id.toString(),
+      },
     };
   });
 
-  return { 
-    paths, 
-    fallback: false 
+  return {
+    paths,
+    fallback: false,
   };
 };
 
